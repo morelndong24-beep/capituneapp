@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { Card, Button, Progress } from '@components'
-import { useProjectStore } from '@store/projectStore'
+import { Card, Button } from '../components'
+import { useProjectStore } from '../store/projectStore'
 import { Upload, Download, FileText, Check, X, Clock } from 'lucide-react'
 
 export const DocumentsPage = () => {

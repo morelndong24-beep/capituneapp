@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { useAuthStore } from '@store/authStore'
-import { useThemeStore } from '@store/themeStore'
+import { useAuthStore } from './store/authStore'
+import { useThemeStore } from './store/themeStore'
 import { useEffect } from 'react'
-import { Layout } from '@components/Layout'
-import { ProtectedRoute } from '@utils/ProtectedRoute'
+import { Layout } from './components/Layout'
+import { ProtectedRoute } from './utils/ProtectedRoute'
 import {
   LoginPage,
   DashboardPage,
@@ -23,7 +23,7 @@ import {
   AdminTrafficPage,
   AdminInfrastructurePage,
   SettingsPage,
-} from '@pages'
+} from './pages'
 
 function App() {
   const { isDark } = useThemeStore()

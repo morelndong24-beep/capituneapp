@@ -25,6 +25,8 @@ export interface ImmigrationProject {
   status: 'draft' | 'in-progress' | 'submitted' | 'approved' | 'rejected'
   progress: number
   category: string
+  description?: string
+  clientName?: string
   createdAt: Date
   updatedAt: Date
   documents: Document[]

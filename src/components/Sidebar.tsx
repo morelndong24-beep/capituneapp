@@ -14,12 +14,10 @@ import {
   Globe,
   Shield,
   BookOpen,
-  Phone,
-  CheckCircle,
   TrendingUp,
   Server,
 } from 'lucide-react'
-import { useAuthStore } from '@store/authStore'
+import { useAuthStore } from '../store/authStore'
 
 interface SidebarProps {
   isOpen?: boolean

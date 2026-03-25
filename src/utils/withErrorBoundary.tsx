@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const withErrorBoundary = (Component: React.ComponentType<any>) => {
-  return class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
-    constructor(props: any) {
+export const withErrorBoundary = <P extends Record<string, unknown>>(Component: React.ComponentType<P>) => {
+  return class ErrorBoundary extends React.Component<P, { hasError: boolean }> {
+    constructor(props: P) {
       super(props)
       this.state = { hasError: false }
     }
@@ -11,7 +11,7 @@ export const withErrorBoundary = (Component: React.ComponentType<any>) => {
       return { hasError: true }
     }
 
-    componentDidCatch(error: any, errorInfo: any) {
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
       console.error('Error caught by boundary:', error, errorInfo)
     }
 

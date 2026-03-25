@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { signInWithEmailAndPassword, signInWithPopup, signOut as firebaseSignOut, createUserWithEmailAndPassword, User as FirebaseUser } from 'firebase/auth'
+import { signInWithEmailAndPassword, signInWithPopup, signOut as firebaseSignOut, createUserWithEmailAndPassword, updateProfile as firebaseUpdateProfile, User as FirebaseUser } from 'firebase/auth'
 import { auth, googleProvider, microsoftProvider } from '../firebase'
 import { AuthState, User } from '../types'
 
@@ -45,9 +45,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
         isAuthenticated: true,
         isLoading: false
       })
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Erreur de connexion'
       set({
-        error: error.message || 'Erreur de connexion',
+        error: message,
         isLoading: false
       })
     }
@@ -63,9 +64,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
         isAuthenticated: true,
         isLoading: false
       })
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Erreur de connexion Google'
       set({
-        error: error.message || 'Erreur de connexion Google',
+        error: message,
         isLoading: false
       })
     }
@@ -81,9 +83,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
         isAuthenticated: true,
         isLoading: false
       })
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Erreur de connexion Microsoft'
       set({
-        error: error.message || 'Erreur de connexion Microsoft',
+        error: message,
         isLoading: false
       })
     }
@@ -97,8 +100,9 @@ export const useAuthStore = create<AuthStore>((set) => ({
         isAuthenticated: false,
         error: null
       })
-    } catch (error: any) {
-      set({ error: error.message || 'Erreur de déconnexion' })
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Erreur de déconnexion'
+      set({ error: message })
     }
   },
 
@@ -107,7 +111,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password)
       // Update display name
-      await result.user.updateProfile({
+      await firebaseUpdateProfile(result.user, {
         displayName: `${firstName} ${lastName}`
       })
       const user = firebaseUserToUser(result.user)
@@ -116,9 +120,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
         isAuthenticated: true,
         isLoading: false
       })
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Erreur d\'inscription'
       set({
-        error: error.message || 'Erreur d\'inscription',
+        error: message,
         isLoading: false
       })
     }

@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react'
-import { Header, Sidebar } from '@components'
+import { Header, Sidebar } from './index'
 
 interface LayoutProps {
   children: ReactNode

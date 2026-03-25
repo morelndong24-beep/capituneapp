@@ -1,4 +1,4 @@
-import { Card, Button, Progress } from '@components'
+import { Card, Button } from '../components'
 import { CreditCard, Download, Eye, TrendingUp } from 'lucide-react'
 
 interface Invoice {

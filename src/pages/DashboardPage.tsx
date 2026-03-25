@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { Card, Progress } from '@components'
-import { useProjectStore } from '@store/projectStore'
-import { useAuthStore } from '@store/authStore'
+import { Card, Progress } from '../components'
+import { useProjectStore } from '../store/projectStore'
+import { useAuthStore } from '../store/authStore'
+import { ImmigrationProject, User, Document } from '../types'
 import {
   BarChart3,
   FileText,
@@ -34,14 +34,15 @@ export const DashboardPage = () => {
   }
 }
 
-const ClientDashboard = ({ user, projects }: any) => {
+const ClientDashboard = ({ user, projects }: { user: User; projects: ImmigrationProject[] }) => {
   // Calculate stats
   const stats = {
     totalProjects: projects.length,
-    activeProjects: projects.filter((p) => p.status === 'in-progress').length,
-    completedProjects: projects.filter((p) => p.status === 'approved').length,
+    activeProjects: projects.filter((p: ImmigrationProject) => p.status === 'in-progress').length,
+    completedProjects: projects.filter((p: ImmigrationProject) => p.status === 'approved').length,
     pendingDocuments: projects.reduce(
-      (sum, p) => sum + p.documents.filter((d) => d.status === 'pending').length,
+      (sum: number, p: ImmigrationProject) =>
+        sum + p.documents.filter((d: Document) => d.status === 'pending').length,
       0
     ),
   }
@@ -123,7 +124,7 @@ const ClientDashboard = ({ user, projects }: any) => {
           Projets Récents
         </h2>
         <div className="space-y-4">
-          {projects.slice(0, 3).map((project) => (
+          {projects.slice(0, 3).map((project: ImmigrationProject) => (
             <div key={project.id} className="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
               <div>
                 <h3 className="font-medium text-on-surface">{project.title}</h3>
@@ -141,7 +142,7 @@ const ClientDashboard = ({ user, projects }: any) => {
   )
 }
 
-const ProfessionalDashboard = ({ user, projects }: any) => {
+const ProfessionalDashboard = ({ user, projects }: { user: User; projects: ImmigrationProject[] }) => {
   const stats = {
     totalClients: 25, // Mock data
     activeConsultations: 8,
@@ -226,7 +227,7 @@ const ProfessionalDashboard = ({ user, projects }: any) => {
           Consultations Récentes
         </h2>
         <div className="space-y-4">
-          {projects.slice(0, 3).map((project) => (
+          {projects.slice(0, 3).map((project: ImmigrationProject) => (
             <div key={project.id} className="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
               <div>
                 <h3 className="font-medium text-on-surface">{project.title}</h3>
@@ -249,7 +250,7 @@ const ProfessionalDashboard = ({ user, projects }: any) => {
   )
 }
 
-const AdminDashboard = ({ user }: any) => {
+const AdminDashboard = ({ user }: { user: User }) => {
   const stats = {
     totalUsers: 1250,
     activeSessions: 89,

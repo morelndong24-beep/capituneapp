@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Card, Button, Progress } from '@components'
-import { useProjectStore } from '@store/projectStore'
-import { useAuthStore } from '@store/authStore'
-import { Plus, Eye, Trash2, Edit2 } from 'lucide-react'
+import { Card, Button, Progress } from '../components'
+import { useProjectStore } from '../store/projectStore'
+import { useAuthStore } from '../store/authStore'
+import { Plus, Eye, Trash2 } from 'lucide-react'
 
 export const ProjectsPage = () => {
   const { projects, deleteProject, setCurrentProject } = useProjectStore()

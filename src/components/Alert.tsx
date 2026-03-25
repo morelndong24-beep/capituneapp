@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { AlertCircle, CheckCircle, Info, AlertTriangle } from 'lucide-react'
 
 interface AlertProps {

@@ -1,7 +1,6 @@
-import { ReactNode } from 'react'
 import { Menu, X, Moon, Sun, LogOut } from 'lucide-react'
-import { useAuthStore } from '@store/authStore'
-import { useThemeStore } from '@store/themeStore'
+import { useAuthStore } from '../store/authStore'
+import { useThemeStore } from '../store/themeStore'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
