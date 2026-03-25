@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-on-background dark:bg-slate-950 dark:text-slate-50;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg p-6 shadow-md;
+    background-color: #FFFBFE;
+    border: 1px solid #CAC4D0;
+  }
+
+  .dark .card {
+    background-color: #1C1B1F;
+  }
+
+  .card-interactive {
+    @apply card hover:shadow-lg transition-shadow duration-200 cursor-pointer;
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-flex items-center justify-center gap-2;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background-color: #0047AB;
+  }
+
+  .btn-primary:hover {
+    background-color: #003580;
+  }
+
+  .btn-secondary {
+    @apply btn border transition-colors;
+    background-color: #F3EEF6;
+    color: #1C1B1F;
+    border-color: #CAC4D0;
+  }
+
+  .btn-secondary:hover {
+    background-color: #ECE6F0;
+  }
+
+  .dark .btn-secondary {
+    background-color: #49454F;
+    color: #E6E1E5;
+    border-color: #79747E;
+  }
+
+  .btn-tertiary {
+    @apply btn;
+    color: #0047AB;
+  }
+
+  .btn-tertiary:hover {
+    background-color: rgba(0, 71, 171, 0.1);
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 transition-all;
+    background-color: #F3EEF6;
+    border: 1px solid #CAC4D0;
+    color: #1C1B1F;
+  }
+
+  .dark .input {
+    background-color: #49454F;
+    border-color: #79747E;
+    color: #E6E1E5;
+  }
+
+  .input:focus {
+    border-color: #0047AB;
+    box-shadow: 0 0 0 3px rgba(0, 71, 171, 0.1);
+  }
+
+  .input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase;
+    background-color: #DEE0EB;
+    color: #0047AB;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200;
+    color: #49454F;
+  }
+
+  .nav-link:hover {
+    background-color: #F3EEF6;
+  }
+
+  .dark .nav-link {
+    color: #CAC4D0;
+  }
+
+  .dark .nav-link:hover {
+    background-color: #49454F;
+  }
+
+  .nav-link.active {
+    background-color: #ECE6F0;
+    color: #0047AB;
+  }
+
+  .dark .nav-link.active {
+    background-color: #49454F;
+    color: #7AC3FB;
+  }
+}
